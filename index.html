@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>BloodBank.software — Open Source Blood Bank Management Software</title>
+  <meta name="description" content="Free, open source blood bank management software for hospitals, NGOs, and government blood banks. Built for India and Africa. Self-host in minutes." />
+  <meta name="keywords" content="blood bank management software, open source blood bank software, blood bank software India, blood bank software Africa, blood donor management system, transfusion management software" />
+  <meta name="author" content="Gegosoft Technologies" />
+  <link rel="canonical" href="https://bloodbank.software" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="BloodBank.software — Open Source Blood Bank Management" />
+  <meta property="og:description" content="Free, open source blood bank management software for hospitals and NGOs. Self-host in minutes." />
+  <meta property="og:url" content="https://bloodbank.software" />
+  <meta property="og:type" content="website" />
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "BloodBank.software",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Linux, Windows, macOS",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "Open source blood bank management software for hospitals, NGOs and government blood banks.",
+    "url": "https://bloodbank.software",
+    "author": {
+      "@type": "Organization",
+      "name": "Gegosoft Technologies",
+      "url": "https://gegosoft.com"
+    }
+  }
+  </script>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts: DM Serif Display + DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['DM Serif Display', 'Georgia', 'serif'],
+            sans:  ['DM Sans', 'sans-serif'],
+          },
+          colors: {
+            blood:   '#C0392B',
+            blooddk: '#922B21',
+            ink:     '#1A1A1A',
+            mist:    '#F7F5F2',
+            stone:   '#8C8C8C',
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.8s ease both',
+            'fade-in': 'fadeIn 1s ease both',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4,0,0.6,1) infinite',
+          },
+          keyframes: {
+            fadeUp:  { '0%': { opacity: 0, transform: 'translateY(18px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } },
+            fadeIn:  { '0%': { opacity: 0 }, '100%': { opacity: 1 } },
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'DM Sans', sans-serif; background: #F7F5F2; color: #1A1A1A; }
+    .serif { font-family: 'DM Serif Display', serif; }
+
+    /* Subtle grain texture on hero */
+    .grain::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0;
+    }
+
+    /* Animated blood drop */
+    @keyframes drip {
+      0%,100% { transform: scaleY(1) translateY(0); }
+      50%      { transform: scaleY(1.06) translateY(3px); }
+    }
+    .drop { animation: drip 2.8s ease-in-out infinite; transform-origin: top center; }
+
+    /* Notify form */
+    input:focus { outline: none; border-color: #C0392B; }
+
+    /* Divider */
+    .rule { border: none; border-top: 1px solid #E0DBD5; }
+
+    [style*="animation-delay"] { animation-fill-mode: both; }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+  <!-- ── HEADER ─────────────────────────────────────────── -->
+  <header class="flex items-center justify-between px-6 md:px-12 py-5 animate-fade-in">
+    <div class="flex items-center gap-2.5">
+      <!-- Blood drop SVG logo -->
+      <svg class="drop w-7 h-7" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M16 2 C16 2 3 16 3 23 C3 30 9 34 16 34 C23 34 29 30 29 23 C29 16 16 2 16 2Z" fill="#C0392B"/>
+        <path d="M16 6 C16 6 6 18 6 23 C6 28.5 10.5 32 16 32" stroke="#922B21" stroke-width="0.8" fill="none" opacity="0.4"/>
+      </svg>
+      <span class="font-sans font-500 text-ink text-base tracking-tight">
+        <span class="font-medium">bloodbank</span><span class="text-stone">.software</span>
+      </span>
+    </div>
+    <a href="mailto:hello@bloodbank.software"
+       class="text-xs font-medium text-stone hover:text-blood transition-colors duration-200">
+      hello@bloodbank.software
+    </a>
+  </header>
+
+  <!-- ── HERO ───────────────────────────────────────────── -->
+  <main class="grain relative flex-1 flex flex-col items-center justify-center text-center px-6 py-20 md:py-32">
+
+    <!-- Coming soon badge -->
+    <div class="animate-fade-up" style="animation-delay:0.1s">
+      <span class="inline-flex items-center gap-1.5 text-xs font-medium text-blood border border-blood/30 bg-blood/5 rounded-full px-3.5 py-1 mb-10 tracking-wide uppercase">
+        <span class="w-1.5 h-1.5 rounded-full bg-blood animate-pulse-slow inline-block"></span>
+        Coming Soon
+      </span>
+    </div>
+
+    <!-- Headline -->
+    <h1 class="serif animate-fade-up text-4xl md:text-6xl lg:text-7xl text-ink leading-[1.08] max-w-3xl mb-6"
+        style="animation-delay:0.2s">
+      Blood Bank Management.<br />
+      <em class="text-blood not-italic">Open Source.</em>
+    </h1>
+
+    <!-- Subheadline -->
+    <p class="animate-fade-up text-stone text-base md:text-lg max-w-xl leading-relaxed mb-12"
+       style="animation-delay:0.35s">
+      Free, self-hosted blood bank management software for hospitals, NGOs,
+      and government blood banks — built for India and Africa.
+    </p>
+
+    <!-- Notify form -->
+    <form class="animate-fade-up flex flex-col sm:flex-row gap-3 w-full max-w-md"
+          style="animation-delay:0.45s"
+          onsubmit="handleSubmit(event)">
+      <input
+        type="email"
+        placeholder="your@email.com"
+        required
+        class="flex-1 bg-white border border-stone/25 rounded-lg px-4 py-3 text-sm text-ink placeholder:text-stone/60 transition-colors duration-200 shadow-sm"
+        aria-label="Email address"
+      />
+      <button type="submit"
+        class="bg-blood hover:bg-blooddk text-white text-sm font-medium px-6 py-3 rounded-lg transition-colors duration-200 whitespace-nowrap shadow-sm">
+        Notify me
+      </button>
+    </form>
+    <p id="thanks" class="hidden text-sm text-blood mt-3 animate-fade-in">
+      ✓ You're on the list. We'll be in touch.
+    </p>
+
+    <!-- Key facts -->
+    <div class="animate-fade-up flex flex-wrap justify-center gap-x-8 gap-y-2 mt-16 text-xs text-stone"
+         style="animation-delay:0.6s">
+      <span>Node.js · Next.js · NestJS · MongoDB</span>
+      <span class="hidden sm:inline text-stone/30">·</span>
+      <span>Elastic License 2.0</span>
+      <span class="hidden sm:inline text-stone/30">·</span>
+      <span>Self-hosted</span>
+    </div>
+
+  </main>
+
+  <!-- ── FOOTER ─────────────────────────────────────────── -->
+  <footer class="px-6 md:px-12 py-6 animate-fade-in" style="animation-delay:0.7s">
+    <hr class="rule mb-5" />
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-stone">
+      <span>
+        A product by
+        <a href="https://gegosoft.com" class="hover:text-blood transition-colors duration-200 underline underline-offset-2">
+          Gegosoft Technologies
+        </a>
+        · Madurai, India
+      </span>
+      <div class="flex items-center gap-5">
+        <a href="mailto:hello@bloodbank.software" class="hover:text-blood transition-colors duration-200">Contact</a>
+        <a href="https://github.com/gegosoft" class="hover:text-blood transition-colors duration-200">GitHub</a>
+        <span>© 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      // Replace this with your actual form handler / Formspree / Mailchimp endpoint
+      document.getElementById('thanks').classList.remove('hidden');
+      e.target.reset();
+      e.target.style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
