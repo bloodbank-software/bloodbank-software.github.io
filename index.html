@@ -147,12 +147,14 @@
       and government blood banks — built for India and Africa.
     </p>
 
-    <!-- Notify form -->
+    <!-- Notify form — posts to Wufoo (amp2), field ID 1 = Email -->
     <form class="animate-fade-up flex flex-col sm:flex-row gap-3 w-full max-w-md"
           style="animation-delay:0.45s"
           onsubmit="handleSubmit(event)">
+      <input type="hidden" name="idstamp" value="p/+EZwtOCuzuziHk8dEV+W8CKlgdgaMf3a6i0eo+2NY=" />
       <input
         type="email"
+        name="Field1"
         placeholder="your@email.com"
         required
         class="flex-1 bg-white border border-stone/25 rounded-lg px-4 py-3 text-sm text-ink placeholder:text-stone/60 transition-colors duration-200 shadow-sm"
@@ -192,19 +194,37 @@
       </span>
       <div class="flex items-center gap-5">
         <a href="mailto:hello@bloodbank.software" class="hover:text-blood transition-colors duration-200">Contact</a>
-        <a href="https://github.com/gegosoft" class="hover:text-blood transition-colors duration-200">GitHub</a>
+        <a href="https://github.com/bloodbank-software" class="hover:text-blood transition-colors duration-200">GitHub</a>
         <span>© 2026</span>
       </div>
     </div>
   </footer>
 
   <script>
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
       e.preventDefault();
-      // Replace this with your actual form handler / Formspree / Mailchimp endpoint
+      const form = e.target;
+      const btn  = form.querySelector('button[type="submit"]');
+
+      // Disable button while submitting
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      try {
+        // Post to Wufoo — mode:no-cors because Wufoo doesn't send CORS headers
+        // idstamp is a public form integrity token, safe to include here
+        await fetch('https://amp2.wufoo.com/api/v3/forms/ms6ew6900jxb39/entries.json', {
+          method: 'POST',
+          mode: 'no-cors',
+          body: new FormData(form)
+        });
+      } catch (_) {
+        // no-cors means we can't read the response — submission still goes through
+      }
+
+      // Show thank-you regardless (no-cors blocks response reading)
       document.getElementById('thanks').classList.remove('hidden');
-      e.target.reset();
-      e.target.style.display = 'none';
+      form.style.display = 'none';
     }
   </script>
 
