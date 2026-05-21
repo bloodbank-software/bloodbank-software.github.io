@@ -211,9 +211,9 @@
       btn.textContent = 'Sending...';
 
       try {
-        // Post to Wufoo — mode:no-cors because Wufoo doesn't send CORS headers
+        // Post to Wufoo form endpoint — mode:no-cors because Wufoo doesn't send CORS headers
         // idstamp is a public form integrity token, safe to include here
-        await fetch('https://amp2.wufoo.com/api/v3/forms/ms6ew6900jxb39/entries.json', {
+        await fetch('https://amp2.wufoo.com/forms/ms6ew6900jxb39/', {
           method: 'POST',
           mode: 'no-cors',
           body: new FormData(form)
